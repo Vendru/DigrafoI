@@ -16,8 +16,7 @@
 
 class Grafo {
 public:
-    /** Constroi um grafo simples que possui o numero de vertices recebido por
-     *  parametro e que nao possui arestas */
+
     Grafo(int num_vertices);
 
     int num_vertices();
@@ -25,13 +24,12 @@ public:
 
     bool tem_aresta(Aresta e);
 
-    /** Insere uma aresta no grafo caso a aresta ainda nao exista no grafo e
-     *  nao seja um laco */
+
     void insere_aresta(Aresta e);
 
-    // bool caminho(int v, int w, int ind, int marcado[]);
-    // bool caminho_restrito(int v, int w, int t, int z, int marcado[]);
     bool bellman_ford(int s, std::vector<int> &pai, std::vector<int> &dp);
+    
+    void min_vidas(int s);
 
     void imprime();
     
@@ -41,4 +39,4 @@ private:
     std::vector<std::vector<int>> matriz_adj_;
 };
 
-#endif /* GRAFO_H */
+#endif /* DIGRAFO_H */
