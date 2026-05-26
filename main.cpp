@@ -13,32 +13,33 @@
 using namespace std;
 
 int main() {
-        int Regiao;
-        int Cano;
-        int X;
-        int Y;
-        int D;
-        int O;
-        int Z;
-        cin >> Regiao >> Cano;
+    int Regiao;
+    int Cano;
+    int X;
+    int Y;
+    int D;
+    int O;
+    int Z;
+    
+    if (!(cin >> Regiao >> Cano)) return 0;
 
-
-        Grafo g(Regiao);
-        for (int i = 0; i < Cano; i++) {
-            cin >> X >> Y >> D;
-            g.insere_aresta(Aresta(X, Y, D));
-        }
-        cin >> O;
-        
-        if (O > -1){
-        for (int i = 0; i <= O; i++){
+    Grafo g(Regiao);
+    for (int i = 0; i < Cano; i++) {
+        cin >> X >> Y >> D;
+        g.insere_aresta(Aresta(X, Y, D));
+    }
+    
+    cin >> O;
+    
+    if (O >= 0){
+        for (int i = 0; i < O; i++){ // Correção: iterar exatamente 'O' vezes
             cin >> Z;
-            std::vector<int> dp(g.num_vertices());
-            std::vector<int> pai(g.num_vertices());
-            g.bellman_ford(Z, pai, dp);
-
-        }}
-        else throw(runtime_error("O valor deve ser maior ou igual a zero"));
+            g.min_vidas(Z);
+        }
+    }
+    else {
+        throw(runtime_error("O valor deve ser maior ou igual a zero"));
+    }
 
     return 0;
 }
